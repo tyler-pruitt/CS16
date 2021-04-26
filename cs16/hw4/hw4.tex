@@ -1,0 +1,406 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={Homework 4: Arrays and Functions},
+  pdfauthor={CS16 - Winter 2021},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\newenvironment{Shaded}{}{}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.49,0.56,0.16}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.53,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.73,0.13,0.13}{\textit{#1}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.40,0.40,0.40}{#1}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.74,0.48,0.00}{#1}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.73,0.40,0.53}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.10,0.09,0.49}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\usepackage{longtable,booktabs}
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifluatex
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+
+\title{Homework 4: Arrays and Functions}
+\author{CS16 - Winter 2021}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{longtable}[]{@{}cl@{}}
+\toprule
+\endhead
+\textbf{Due:} & Thursday, February 4, 2021 (11:59 PM PST)\tabularnewline
+\textbf{Points:} & 70\tabularnewline
+\textbf{Name:} &
+\texttt{\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_}\tabularnewline
+\textbf{Homework buddy:} &
+\texttt{\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\begin{itemize}
+\tightlist
+\item
+  You may collaborate on this homework with \textbf{at most} one person,
+  an optional ``homework buddy.''
+\item
+  \textbf{Submission instructions:} All questions are to be written
+  (either by hand or typed) \emph{in the provided spaces} and turned in
+  as a single PDF on Gradescope. If you submit handwritten solutions
+  write legibly. We reserve the right to give 0 points to answers we
+  cannot read. When you submit your answer on Gradescope, \textbf{be
+  sure to select which portions of your answer correspond to which
+  problem} and clearly mark on the page itself which problem you are
+  answering. We reserve the right to give 0 points to submissions that
+  fail to do this.
+\end{itemize}
+
+\pagenumbering{gobble}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  (2 points) What happens if you forget the return statement in a void
+  function?
+\end{enumerate}
+
+\begin{verbatim}
+
+
+\end{verbatim}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  (2 points) In C++11, can you define a function inside the body of
+  another function? And can you call a function in the body of another
+  function?
+\end{enumerate}
+
+\begin{verbatim}
+
+
+
+\end{verbatim}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  (2 points) What is the difference between a call-by-reference
+  parameter and a call-by-value parameter? As a programmer, when might
+  you decide to use one over the other?
+\end{enumerate}
+
+\begin{verbatim}
+
+
+
+\end{verbatim}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{3}
+\tightlist
+\item
+  (4 points) Write a void function definition for a function called
+  \texttt{zero\_both} with 2 parameters, both which are variables of
+  type \texttt{int}, and set the value of both variables to 0. Describe
+  if you picked the function parameters to be call-by-reference or
+  call-by-value \textbf{and why?}
+\end{enumerate}
+
+\begin{verbatim}
+\end{verbatim}
+
+\pagebreak
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{4}
+\tightlist
+\item
+  (8 points) Assume we want to add all the numbers inside of a
+  3-dimensional int array that is declared as:
+  \texttt{int\ R{[}3{]}{[}2{]}{[}3{]}\ =\ \{1\};}
+\end{enumerate}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\tightlist
+\item
+  (2 points) How many loops do we need to use to do this?
+\end{enumerate}
+
+\begin{verbatim}
+
+\end{verbatim}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  (2 points) Which would be better to use: \texttt{for} loops or
+  \texttt{while} loops and \textbf{why}?
+\end{enumerate}
+
+\begin{verbatim}
+
+
+
+\end{verbatim}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  (2 points) What is the total number of elements in this array?
+\end{enumerate}
+
+\begin{verbatim}
+
+\end{verbatim}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\setcounter{enumi}{3}
+\tightlist
+\item
+  (2 points) What \textbf{values} do the array elements have when the
+  above declaration is executed?
+\end{enumerate}
+
+\begin{verbatim}
+
+\end{verbatim}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{5}
+\tightlist
+\item
+  (6 points) One way to force a ``one time'' data type conversion is to
+  use the \texttt{static\_cast} conversion. Take for example the
+  following code snippet:
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DataTypeTok{int}\NormalTok{ number = }\DecValTok{7}\NormalTok{;}
+\DataTypeTok{int}\NormalTok{ denom = }\DecValTok{5}\NormalTok{;}
+\DataTypeTok{double}\NormalTok{ var1 = number / denom;}
+\DataTypeTok{double}\NormalTok{ var2 = }\KeywordTok{static\_cast}\NormalTok{\textless{}}\DataTypeTok{double}\NormalTok{\textgreater{}(number) / denom;}
+\DataTypeTok{int}\NormalTok{ var3 = }\KeywordTok{static\_cast}\NormalTok{\textless{}}\DataTypeTok{double}\NormalTok{\textgreater{}(number) / denom;}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\tightlist
+\item
+  (3 points) Would you expect \texttt{var1}, \texttt{var2}, and
+  \texttt{var3} to be equal to each other? Why or why not?
+\end{enumerate}
+
+\begin{verbatim}
+
+
+
+
+\end{verbatim}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  (3 points) Write a function definition for a function that takes one
+  argument of type \texttt{int} and one argument of type
+  \texttt{double}, and returns a value of type \texttt{double} that is
+  the \emph{real number} average of the two arguments.
+\end{enumerate}
+
+\begin{verbatim}
+\end{verbatim}
+
+\pagebreak
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{6}
+\tightlist
+\item
+  (30 points) Complete following function definition for the function
+  \texttt{find()} that returns \emph{how many times a value appears in
+  an array}. The function takes three arguments: (1) \texttt{list}, an
+  array of integers; (2) \texttt{asize}, a non-negative integer that
+  indicates the size of the array \texttt{list}; (3) \texttt{target}, an
+  integer value that is being searched for. All the function should do
+  is return an integer number that indicates how many times the target
+  integer that is being searched for appears in the input array
+  \texttt{list}. It should return 0 if that value is not in the array.
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DataTypeTok{int}\NormalTok{ find(}\DataTypeTok{int}\NormalTok{ list[], }\DataTypeTok{int}\NormalTok{ asize, }\DataTypeTok{int}\NormalTok{ target) \{}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{7}
+\tightlist
+\item
+  (6 points) The book and lecture mention variable tracing and stubbing.
+  Describe what they are and how they are best used.
+\end{enumerate}
+
+\begin{verbatim}
+
+
+
+
+
+
+
+
+
+\end{verbatim}
+
+\pagebreak
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{8}
+\tightlist
+\item
+  (10 points) Write out the contents of a \texttt{makefile}, based on
+  the examples from lecture and lab, for a project that compiles a
+  program called \texttt{NSA.cpp} that also ``includes'' a file called
+  \texttt{secrets.h}. The compilation must adhere to C++ version 11
+  standards and should show all warnings. You should also add a
+  \texttt{clean} section (again, as per the examples I've shown you).
+  Make sure you use the correct syntax!
+\end{enumerate}
+
+\begin{verbatim}
+
+
+
+
+
+
+
+
+
+
+
+\end{verbatim}
+
+\end{document}

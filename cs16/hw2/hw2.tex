@@ -1,0 +1,266 @@
+\begin{longtable}[]{@{}cl@{}}
+\toprule
+\endhead
+\textbf{Due:} & Thursday, January 21, 2021 (11:59 PM
+PST) \\ \addlinespace
+\textbf{Points:} & 60 \\ \addlinespace
+\textbf{Name:} &
+\texttt{\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_} \\ \addlinespace
+\textbf{Homework buddy:} &
+\texttt{\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_} \\ \addlinespace
+\bottomrule
+\end{longtable}
+
+\begin{itemize}
+\tightlist
+\item
+  You may collaborate on this homework with \textbf{at most} one person,
+  an optional ``homework buddy.''
+\item
+  \textbf{Submission instructions:} All questions are to be written
+  (either by hand or typed) \emph{in the provided spaces} and turned in
+  as a single PDF on Gradescope. If you submit handwritten solutions
+  write legibly. We reserve the right to give 0 points to answers we
+  cannot read. When you submit your answer on Gradescope, \textbf{be
+  sure to select which portions of your answer correspond to which
+  problem} and clearly mark on the page itself which problem you are
+  answering. We reserve the right to give 0 points to submissions that
+  fail to do this.
+\end{itemize}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  (3 points) Is this variable declaration OK to do in C++? Why or why
+  not?
+\end{enumerate}
+
+\begin{verbatim}
+double const = 30;
+\end{verbatim}
+
+\begin{verbatim}
+
+\end{verbatim}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  (4 points) Show 2 different ways to initialize variables in C++.
+\end{enumerate}
+
+\begin{verbatim}
+
+\end{verbatim}
+
+\pagebreak
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  (12 points) Mark up this code to show (at least) 4 things that are
+  missing.
+\end{enumerate}
+
+\begin{verbatim}
+#include <iostream>
+
+int main()
+    int a(0), b(0), c(0);
+    string quote;
+    cout << "Enter 3 numbers separated by spaces ";
+    cin >> a, b, c;
+    sum = a + b + c;
+    quote = "The sum of these 3 numbers is "
+    cout << quote << sum;
+    return 0;
+}
+\end{verbatim}
+
+\pagebreak
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{3}
+\tightlist
+\item
+  (15 points) The program below intends to do the following: Repeatedly
+  prompt the user to input an integer number. When the user no longer
+  wants to continue, output the sum of all the positive numbers,
+  followed by the sum of all the negative numbers. However, the given
+  program has errors. Mark all logical and syntax errors in the program
+  and provide corrections in the space provided to the right. Add
+  missing statements if any.
+\end{enumerate}
+
+\begin{verbatim}
+#include <iostream>
+using namespace std;
+
+int main() {
+
+    int a, sumPositive, sumNegative;
+
+    string promptContinue = "\nTo continue, enter Y/y\n";
+
+    string promptNum = "\nEnter a number: ";
+
+    char response;
+
+    while (reponse = 'y' || 'Y') {
+
+        cout << promptNum;
+
+        cin >> a;
+
+        if (a)
+            sumPositive += a;
+        else
+            sumNegative += a;
+
+        cout << promptContinue;
+
+
+
+    }
+
+    cout << "Sum of all positive numbers: " << sumPositive << endl;
+
+    cout << "Sum of all negative numbers: " << sumNegative << endl;
+
+    return 0;
+}
+\end{verbatim}
+
+\pagebreak
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{4}
+\tightlist
+\item
+  (4 points) What is the resulting output from the following C++
+  statements? Explain why.
+\end{enumerate}
+
+\begin{verbatim}
+int x(35), y(5);
+bool v, w;
+v = (x < y * y);
+w = ((x/y) == 7);
+cout << (v && w) << endl;
+\end{verbatim}
+
+\begin{verbatim}
+
+
+
+
+\end{verbatim}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{5}
+\tightlist
+\item
+  (6 points) Write code with \textbf{one} \texttt{while} loop that
+  prints out these 5 lines like this (remember a newline after each
+  line):
+\end{enumerate}
+
+\begin{verbatim}
+COUNTDOWN TO ZERO: 4
+COUNTDOWN TO ZERO: 3
+COUNTDOWN TO ZERO: 2
+COUNTDOWN TO ZERO: 1
+COUNTDOWN TO ZERO: LIFT OFF!
+\end{verbatim}
+
+\begin{verbatim}
+
+
+
+
+
+
+
+
+
+
+\end{verbatim}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{6}
+\tightlist
+\item
+  (4 points) What is the exact output of the following statements?
+\end{enumerate}
+
+\begin{verbatim}
+int s = 1;
+do {
+    cout << s << "+";
+}
+while (s++ < 5);
+\end{verbatim}
+
+\begin{verbatim}
+
+\end{verbatim}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{7}
+\tightlist
+\item
+  (4 points) Same question as (7.) but the last statement now reads:
+\end{enumerate}
+
+\begin{verbatim}
+while (++s <= 5);
+\end{verbatim}
+
+\begin{verbatim}
+
+\end{verbatim}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{8}
+\tightlist
+\item
+  (4 points) Explain via an example what a ``type mismatch'' is. Also,
+  explain how compilers handle C++ statements that have a type mismatch.
+\end{enumerate}
+
+\begin{verbatim}
+
+
+
+
+
+
+
+\end{verbatim}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{9}
+\tightlist
+\item
+  (4 points) Write an if-else statement that outputs the string ``Grade
+  is B'' if the variable \texttt{score} is between 80 and 90 (both
+  limits included). Otherwise, the if-else statement should output
+  ``Grade is not B''.
+\end{enumerate}
+
+\begin{verbatim}
+
+
+\end{verbatim}

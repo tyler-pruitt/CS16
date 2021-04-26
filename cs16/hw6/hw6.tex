@@ -1,0 +1,351 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={Homework 6: File I/O},
+  pdfauthor={CS16 - Winter 2021},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\newenvironment{Shaded}{}{}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.49,0.56,0.16}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.53,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.73,0.13,0.13}{\textit{#1}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.40,0.40,0.40}{#1}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.74,0.48,0.00}{#1}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.73,0.40,0.53}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.10,0.09,0.49}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifluatex
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+
+\title{Homework 6: File I/O}
+\author{CS16 - Winter 2021}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{longtable}[]{@{}cl@{}}
+\toprule
+\endhead
+\textbf{Due:} & Thursday, February 18, 2021 (11:59 PM
+PST) \\ \addlinespace
+\textbf{Points:} & 80 \\ \addlinespace
+\textbf{Name:} &
+\texttt{\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_} \\ \addlinespace
+\textbf{Homework buddy:} &
+\texttt{\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_} \\ \addlinespace
+\bottomrule
+\end{longtable}
+
+\begin{itemize}
+\tightlist
+\item
+  You may collaborate on this homework with \textbf{at most} one person,
+  an optional ``homework buddy.''
+\item
+  \textbf{Submission instructions:} All questions are to be written
+  (either by hand or typed) \emph{in the provided spaces} and turned in
+  as a single PDF on Gradescope. If you submit handwritten solutions
+  write legibly. We reserve the right to give 0 points to answers we
+  cannot read. When you submit your answer on Gradescope, \textbf{be
+  sure to select which portions of your answer correspond to which
+  problem} and clearly mark on the page itself which problem you are
+  answering. We reserve the right to give 0 points to submissions that
+  fail to do this.
+\end{itemize}
+
+\pagenumbering{gobble}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  (10 points) When testing for end of file, the lecture (and the
+  readings) mention two methods. What are they and when is each best
+  used?
+\end{enumerate}
+
+\begin{verbatim}
+\end{verbatim}
+
+\pagebreak
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  (10 points) Consider the following code snippet from a program where
+  everything is set up correctly:
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{cout \textless{}\textless{} “Enter a line of input: ”;}
+\DataTypeTok{char}\NormalTok{ next;}
+\ControlFlowTok{do}\NormalTok{ \{}
+\NormalTok{   cin.get(next);}
+\NormalTok{   cout \textless{}\textless{} next;}
+\NormalTok{\} }\ControlFlowTok{while}\NormalTok{ (!(isdigit(next)) \&\& (next != }\CharTok{\textquotesingle{}}\SpecialCharTok{\textbackslash{}n}\CharTok{\textquotesingle{}}\NormalTok{));}
+\NormalTok{cout \textless{}\textless{} “END!\textbackslash{}n”;}
+\end{Highlighting}
+\end{Shaded}
+
+If the program dialog is as follows:
+
+\begin{verbatim}
+Enter a line of input: I'll see you 2nite at 9PM!
+\end{verbatim}
+
+then what will be the next line of output? \textbf{And explain why.}
+
+\begin{verbatim}
+\end{verbatim}
+
+\pagebreak
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  (10 points) I have a text file called ``t.txt'' that contains two
+  entries: ``University of California'' on one line, and ``Computer
+  Science Rules!'' on the next line.
+\end{enumerate}
+
+Show the output produced when the following code (entire program not
+shown so assume all the necessary set ups are done correctly) is
+executed \textbf{and explain why that is}. You are encouraged to also
+try to compile this to verify your results.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{ifstream tin;}
+\DataTypeTok{char}\NormalTok{ c;}
+
+\NormalTok{tin.open(}\StringTok{"t.txt"}\NormalTok{);}
+
+\NormalTok{tin.get(c);}
+\ControlFlowTok{while}\NormalTok{ (!tin.eof()) \{}
+   \ControlFlowTok{if}\NormalTok{ ((c != }\CharTok{\textquotesingle{}e\textquotesingle{}}\NormalTok{) \&\& (c != }\CharTok{\textquotesingle{}C\textquotesingle{}}\NormalTok{)) \{}
+\NormalTok{      cout \textless{}\textless{} c;}
+\NormalTok{   \}}
+\NormalTok{   tin.get(c);}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+\end{verbatim}
+
+\pagebreak
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{3}
+\tightlist
+\item
+  (10 points) Complete the code below (there are several missing lines)
+  such that the program reads a text file called ``MyInputs.txt'', which
+  only contains double-type numbers separated by whitespaces. Of course,
+  you don't know ahead of time how many numbers are in the file. You
+  \textbf{must} use all the variables declared below, and you may add
+  more variables as needed. Your program should print the average of
+  these numbers, as indicated below.
+\end{enumerate}
+
+For example, if the text file contains this single line:
+
+\begin{verbatim}
+4.2 3.3 9.1 3.1 0 0 7.5 5.4 9.9 10
+\end{verbatim}
+
+Then the program should print out:
+
+\begin{verbatim}
+The average is: 5.25
+\end{verbatim}
+
+The code is as follows:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\PreprocessorTok{\#include }\ImportTok{\textless{}iostream\textgreater{}}
+
+
+\KeywordTok{using} \KeywordTok{namespace}\NormalTok{ std;}
+
+\DataTypeTok{int}\NormalTok{ main ()}
+\NormalTok{\{}
+\NormalTok{   ifstream inf;}
+   \DataTypeTok{double}\NormalTok{ num, sum(}\DecValTok{0}\NormalTok{), average;}
+   \DataTypeTok{int}\NormalTok{ count = }\DecValTok{0}\NormalTok{;}
+
+
+
+
+
+
+
+
+
+
+
+\NormalTok{   cout \textless{}\textless{} }\StringTok{"The average is: "}\NormalTok{ \textless{}\textless{} av \textless{}\textless{} endl;}
+
+
+
+   \ControlFlowTok{return} \DecValTok{0}\NormalTok{;}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\pagebreak
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{4}
+\tightlist
+\item
+  (40 points) Write a \textbf{function definition} for a function called
+  \texttt{FindMedian()} that will read a file that just contains integer
+  numbers that are separated by whitespaces and then finds the
+  \emph{median} value. The median of a set of numbers is the number that
+  has the same number of data elements greater than the number as there
+  are less than the number.
+\end{enumerate}
+
+Requirements and Hints:
+
+\begin{itemize}
+\tightlist
+\item
+  You can assume that the input data text file will not have more than
+  100 numbers in it (but it could have fewer).
+\item
+  You \textbf{have} to write the resulting median (just the integer and
+  newline) in a separate output data file called
+  \texttt{median\_output.dat}. Don't print anything to standard output.
+\item
+  The function does not have to check if the input or output files exist
+  prior to reading/writing operations.
+\item
+  The function definition should only have two arguments: the input
+  filename variable and the \texttt{ifstream} variable (see example
+  function call below).
+\item
+  Hint 1: It is relatively easy to find the median in a set of sorted
+  integers. And, yes, it's OK to define additional functions!
+\item
+  Hint 2: It matters if the number of integers is odd or even when
+  finding the median. Think about how to address this.
+\end{itemize}
+
+The main function could look like this:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DataTypeTok{int}\NormalTok{ main() \{}
+\NormalTok{   ifstream ifs;}
+\NormalTok{   string fname = }\StringTok{"inputs.txt"}\NormalTok{; }\CommentTok{// could have other names too...}
+\NormalTok{   FindMedian(fname, ifs);}
+   \ControlFlowTok{return} \DecValTok{0}\NormalTok{;}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\textbf{Submission instructions:}
+
+\begin{itemize}
+\tightlist
+\item
+  You will submit this question (just this question) on Gradescope under
+  ``HW 06 - Q5'' as a C++ file called \texttt{median.cpp} (cannot be
+  named otherwise). This should only contain any and all function
+  definitions you have, \textbf{except} for \texttt{main} (we'll supply
+  that). We will test your submission with an autograder. This has the
+  same due date as this homework.
+\end{itemize}
+
+\end{document}

@@ -1,0 +1,354 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={Homework 8: Classes++},
+  pdfauthor={CS16 - Winter 2021},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\newenvironment{Shaded}{}{}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.49,0.56,0.16}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.53,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.73,0.13,0.13}{\textit{#1}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.40,0.40,0.40}{#1}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.74,0.48,0.00}{#1}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.73,0.40,0.53}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.10,0.09,0.49}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\usepackage{longtable,booktabs}
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifluatex
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+
+\title{Homework 8: Classes++}
+\author{CS16 - Winter 2021}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{longtable}[]{@{}cl@{}}
+\toprule
+\endhead
+\textbf{Due:} & Thursday, March 4, 2021 (11:59 PM PST)\tabularnewline
+\textbf{Points:} & 40\tabularnewline
+\textbf{Name:} &
+\texttt{\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_}\tabularnewline
+\textbf{Homework buddy:} &
+\texttt{\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\begin{itemize}
+\tightlist
+\item
+  You may collaborate on this homework with \textbf{at most} one person,
+  an optional ``homework buddy.''
+\item
+  \textbf{Submission instructions:} All questions are to be written
+  (either by hand or typed) \emph{in the provided spaces} and turned in
+  as a single PDF on Gradescope. If you submit handwritten solutions
+  write legibly. We reserve the right to give 0 points to answers we
+  cannot read. When you submit your answer on Gradescope, \textbf{be
+  sure to select which portions of your answer correspond to which
+  problem} and clearly mark on the page itself which problem you are
+  answering. We reserve the right to give 0 points to submissions that
+  fail to do this.
+\end{itemize}
+
+\pagenumbering{gobble}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  (4 points) According to lecture and the textbook, what are the rules
+  of class definition in order to make a class an abstract data type
+  (ADT)?
+\end{enumerate}
+
+\begin{verbatim}
+
+
+
+
+
+\end{verbatim}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  (2 points) What are derived classes and what mechanism do they use in
+  order to fulfill what they need to do?
+\end{enumerate}
+
+\begin{verbatim}
+
+
+
+
+\end{verbatim}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  (2 points) Can a derived class directly access by name a private
+  member variable of the parent class?
+\end{enumerate}
+
+\begin{verbatim}
+
+
+
+
+\end{verbatim}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{3}
+\tightlist
+\item
+  (2 points) Suppose the class \texttt{SportsCar} is a publicly derived
+  class of a class \texttt{Automobile}. Suppose also that the class
+  \texttt{Automobile} has public member functions named
+  \texttt{accelerate} and \texttt{addGas}. Will an object of the class
+  \texttt{SportsCar} have member functions named \texttt{accelerate} and
+  \texttt{addGas}?
+\end{enumerate}
+
+\begin{verbatim}
+
+
+\end{verbatim}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{4}
+\tightlist
+\item
+  (14 points) Suppose your program contains the following class
+  definition:
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{class}\NormalTok{ Automobile \{}
+   \KeywordTok{public}\NormalTok{:}
+      \DataTypeTok{void}\NormalTok{ set\_price(}\DataTypeTok{double}\NormalTok{ new\_price);}
+      \DataTypeTok{void}\NormalTok{ set\_profit(}\DataTypeTok{double}\NormalTok{ new\_profit);}
+      \DataTypeTok{double}\NormalTok{ get\_price();}
+   \KeywordTok{private}\NormalTok{:}
+      \DataTypeTok{double}\NormalTok{ price;}
+      \DataTypeTok{double}\NormalTok{ profit;}
+      \DataTypeTok{double}\NormalTok{ get\_profit();}
+\NormalTok{\};}
+\end{Highlighting}
+\end{Shaded}
+
+Suppose the main part of your program contains the following declaration
+and that the program somehow sets the values of all the member variables
+to some values:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Automobile hyundai, jaguar; }
+\end{Highlighting}
+\end{Shaded}
+
+Which of the following statements are then \textbf{not} allowed in the
+main part of your program and explain \textbf{why}.
+
+\begin{enumerate}
+\def\labelenumi{(\alph{enumi})}
+\tightlist
+\item
+  \texttt{hyundai.price\ =\ 4999.99;}
+\item
+  \texttt{jaguar.set\_price(30000.97);}
+\item
+  \texttt{double\ a\_price,\ a\_profit;}
+\item
+  \texttt{a\_price\ =\ jaguar.get\_price();}
+\item
+  \texttt{a\_profit\ =\ jaguar.get\_profit();}
+\item
+  \texttt{a\_profit\ =\ hyundai.get\_profit();}
+\item
+  \texttt{if\ (hyundai\ ==\ jaguar)\ \{hyundai\ =\ jaguar;\}}
+\end{enumerate}
+
+\begin{verbatim}
+\end{verbatim}
+
+\pagebreak
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{5}
+\tightlist
+\item
+  (16 points) Suppose your program contains the following class
+  definition:
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{class}\NormalTok{ TwoNumbers \{}
+   \KeywordTok{public}\NormalTok{:}
+\NormalTok{      TwoNumbers(}\DataTypeTok{int}\NormalTok{ n1, }\DataTypeTok{int}\NormalTok{ n2);}
+\NormalTok{      TwoNumbers(); }\CommentTok{// initializes num1, num2 to 0}
+      \DataTypeTok{double}\NormalTok{ sum(); }\CommentTok{// returns sum of num1 \& num2}
+      \DataTypeTok{double}\NormalTok{ difference(); }\CommentTok{// returns diff. of num1 from num2}
+      \DataTypeTok{double}\NormalTok{ max(); }\CommentTok{// returns larger of num1, num2}
+   \KeywordTok{private}\NormalTok{:}
+      \DataTypeTok{double}\NormalTok{ num1, num2;}
+\NormalTok{\};}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\tightlist
+\item
+  (10 points) Given the comments shown, give definitions to all 5 of
+  these member functions/constructors:
+\end{enumerate}
+
+\begin{verbatim}
+\end{verbatim}
+
+\pagebreak
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  (2 points) Consider these instructions in \texttt{main()}:
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{TwoNumbers thisOne, thatOne(}\DecValTok{5}\NormalTok{,}\DecValTok{7}\NormalTok{);}
+\NormalTok{thisOne.num1++;}
+\NormalTok{thisOne.num2 {-}= }\DecValTok{7}\NormalTok{;}
+\NormalTok{thatOne.num2 = thatOne.sum() + thisOne.difference();}
+\NormalTok{cout \textless{}\textless{} thisOne.max() / thatOne.max();}
+\end{Highlighting}
+\end{Shaded}
+
+Explain all the reasons \textbf{why} this code will not compile.
+
+\begin{verbatim}
+
+
+
+\end{verbatim}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  (2 points) What would you change to the class definition to make this
+  code compile?
+\end{enumerate}
+
+\begin{verbatim}
+
+
+
+\end{verbatim}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\setcounter{enumi}{3}
+\tightlist
+\item
+  (2 points) When you fix it, what would these instructions do?
+\end{enumerate}
+
+\begin{verbatim}
+\end{verbatim}
+
+\end{document}
