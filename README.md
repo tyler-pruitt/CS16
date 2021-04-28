@@ -1,2 +1,2 @@
-# cs16
+# CS16
 Problem Solving with Computers
