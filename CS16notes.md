@@ -207,7 +207,7 @@ a + b (binary)
 
 Increment/Decrement operators `++ --`
 
-```
+```cpp
 int foo = 0;
 
 foo = foo + 1;
@@ -296,7 +296,7 @@ The order in which statements get executed.
 
 - __Branch__: How a program chooses between 2 alternatives (2 blocks of statements)
 
-'''
+```cpp
 if (Boolean expression)
 {
     // statement 1
@@ -305,23 +305,23 @@ else
 {
     // statement 2
 }
-'''
+```
 
 Again, beware '=' or '=='
 
 ## Loop basics (while, for, do-while)
 
-'''
+```cpp
 int countDown = 3;
 while(countDown > 0)
 {
     cout << "Alright ";
     countDown--;
 }
-'''
+```
 > Alright Alright Alright
 
-'''
+```cpp
 int flag = 1;
 do
 {
@@ -329,10 +329,10 @@ do
     flag -= 1;
 }
 while (flag>0); // note the semicolon
-'''
+```
 > Yo
 
-'''
+```cpp
 /*
     For loop
     Similar to while loop, but with extra parameters
@@ -346,10 +346,10 @@ for (int count = 2; count<6; count++)
 {
     cout << "Apples ";
 }
-'''
+```
 > Apples Apples Apples
 
-'''
+```cpp
 //Cool trick with while loops and ++
 int max = 0;
 while (max<4)
@@ -363,7 +363,7 @@ while (max++<4)
 {
     cout<<"1+";
 }
-'''
+```
 > 1+1+1+
 
 1. start the while loop condition check
@@ -374,13 +374,13 @@ while (max++<4)
 1. increment the value in max
 2. then USE it
 
-'''
+```cpp
 int foo = 1;
 while (foo>0)
 {
     cout << foo << endl;
 }
-'''
+```
 > 1
 > 1
 > 1 ...
@@ -391,7 +391,7 @@ Avoid: the loop body should contain some statement that will eventually cause th
 Common use for 'for' loops:
 Sums, accumulating results
 
-'''
+```cpp
 int sum = 0; // MUST INITIALIZE IT BEFORE THE LOOP
 for (int count=0; count<5; count++)
 {
@@ -400,7 +400,7 @@ for (int count=0; count<5; count++)
     sum += num;
 }
 cout << "sum is " << sum << endl;
-'''
+```
 
 Loop advice:
 - A 'for' loop is generally a good choice when there is a predetermined number of iterations
@@ -414,7 +414,7 @@ Loop advice:
 3. Running out of input
     - Use `eof` function to indicate the end
 
-'''
+```cpp
 // sentinel value
 int number;
 
@@ -428,9 +428,9 @@ while (number >= 0) // number is the "sentinel"
          << "enter a negative integer to quit";
     cin >> number;
 }
-'''
+```
 
-'''
+```cpp
 // Ask before iterating
 char answer;
 cout << "Are you happy? (y/n) ";
@@ -441,7 +441,7 @@ while ((answer == 'n') || (answer == 'N'))
     cout << "How about now? ";
     cin >> answer;
 }
-'''
+```
 
 Nested loops:
 - The body of a loop can contain any kind of C++ statement
@@ -453,7 +453,7 @@ Example:
 - we want to output class average
 - we'll go through each student, one at a time, and calculate their scores
 
-'''
+```cpp
 int students(10);
 double grade(0), subtotal(0), grandTotal(0);
 
@@ -474,7 +474,7 @@ for (int count=0; count < students; count++)
 }
 
 cout << "class average " << grandTotal/students << endl;
-'''
+```
 
 ## Nested conditionals
 
@@ -482,7 +482,7 @@ cout << "class average " << grandTotal/students << endl;
 
 # Intro to functions in C++
 
-- Recall: a _block_ of code is a series of statements that is enclosed by '{}'
+- Recall: a _block_ of code is a series of statements that is enclosed by `{}`
 - Variables _declared_ in that block of code are _local_ to that block
     - __scope__
 
@@ -494,25 +494,25 @@ cout << "class average " << grandTotal/students << endl;
 - You have to declare the _return type_ of the function
     - The type of data is returns
     - We also have to declare the types of the _arguments_ of the functions
-    - 'double crunchNumbers(int x, int y);'
-    - 'string crunchNumbers(int x, int y);'
-    - 'void crunchNumbers(int x, int y);'
+    - `double crunchNumbers(int x, int y);`
+    - `string crunchNumbers(int x, int y);`
+    - `void crunchNumbers(int x, int y);`
 
 2 components:
 1. Function declaration
     - Just like variables, a function must be declared before it's used
-    - __Must__ be placed outside 'main()' (usually before it)
+    - __Must__ be placed outside `main()` (usually before it)
     - __Must__ be placed _before_ the function is __defined__ and __called__
 2. Function definition
     - Where you implement the function (the details)
-    - __Must__ be placed outside of 'main()'
-    - Can be before or after 'main()'
+    - __Must__ be placed outside of `main()`
+    - Can be before or after `main()`
 
 Void functions:
 - Sometimes we want to design subtasks to be implemented as functions
     - Maybe there is some repetition (like printing debug/log statements)
     - We may not want to return anything
-- We can use 'return' to signal an "interupt" and end the function early
+- We can use `return` to signal an "interupt" and end the function early
 
 ### Function declaration
 
@@ -525,8 +525,8 @@ Void functions:
 ## Function calls
 
 - When we call a function, our arguments are getting pass as __values__ into the function.
-    - 'fun(a,b)'; this passes the __values__ of a and b into fun
-    - in 'fun', 'a' and 'b' are treated as local variables to 'fun'
+    - `fun(a,b)`; this passes the __values__ of a and b into fun
+    - in `fun`, `a` and `b` are treated as local variables to `fun`
 
 ### Call-by-value vs Call-by-reference
 
@@ -541,16 +541,17 @@ Void functions:
 
 # Command-line arguments in C++
 
-To use command-line arguements in our programs we add __2 arguments__ to our 'main()'
-    - 'argc' and 'argv'
+To use command-line arguements in our programs we add __2 arguments__ to our `main()`
+    - `argc` and `argv`
 
-'''cpp
+```cpp
 int main(int argc, char* argv[]){
 
 }
-'''
-- 'argc' is the number of arguments
-- 'argv' is the full list of argument values as an array
+```
+
+- `argc` is the number of arguments
+- `argv` is the full list of argument values as an array
 
 # Arrays
 
@@ -564,7 +565,7 @@ int main(int argc, char* argv[]){
     2. How many elements
     3. What data type of the array elements
 
-'''
+```cpp
 char a[4];
 // let's say a character takes 2 bytes of memory
 
@@ -581,20 +582,20 @@ address data
 
 To look up a[3]: 2 x 3 = 6, 6 + 1023 = 1029.
 To look up a[4]: 2 x 4 = 8, 8 + 1023 = 1031.
-'''
+```
 
-- What happens if we try to access 'a[4]'?
+- What happens if we try to access `a[4]`?
 Array index out of range (error)
 - Using an out of range index value __does not__ always produce an error!
     - It can produce a warning, but may fail during runtime
-- 'int a[6]' valid range: 0...5
+- `int a[6]` valid range: 0...5
 
 Default values
-- 'int foo[10] = {2, 31};'
+- `int foo[10] = {2, 31};`
 - Extended initializer list (C++11 or later)
     - Fill in remaining values with "zero" values for that data type
 
-Range-based 'for' loops
+Range-based `for` loops
 
 Arrays in functions
 - Indexed variables can be arguments to functions
@@ -606,56 +607,56 @@ Arrays in functions
 
 Constant array parameters
 - Array parameters allow a function to change the values stores in the array (similar to call-by-reference parameters)
-- If we want a function to __not change__ the values of the array argument, we use the 'const' keyword
+- If we want a function to __not change__ the values of the array argument, we use the `const` keyword
 - A "constant array parameter"
 
 Multidimensional arrays:
 - C++ allows arrays with multiple index dimensions (same type)
-- Example: 'char page[30][100];'
+- Example: `char page[30][100];`
     - page has 2 index values
     - the first 0--29
     - the seconds ranges from 0--99
-    - 'page[2][49]'
+    - `page[2][49]`
 - visually this looks like a matrix with 30 rows and 100 columns
-    - 'page' is an array of size 30, but page's base type is an array 100 characters
+    - `page` is an array of size 30, but page's base type is an array 100 characters
 
-'''
+```
 [0][0] [0][1] ... [0][98] [0][99]
 [1][0] [1][1] ... [1][98] [1][99]
 ...    ...    ... ...     ...
 [29][0] [29][1] ... [29][98] [29][99]
-'''
+```
 
 Multidimensional array parameters in functions:
 - Recall that the size of a one dimensinal array is not needed in the function declaration
-    - 'void displayLine(char a[], int size);'
+    - `void displayLine(char a[], int size);`
 - But, the _base type_ must be specified for a multidimensional array in a function parameter
-    - 'void displayPage(char page[][100], int size_rows);'
+    - `void displayPage(char page[][100], int size_rows);`
 
 # Compilation
 
-- 'g++' is composed of a number of smaller programs
-- 'ld' (linkage editor) merges one or more object files
+- `g++` is composed of a number of smaller programs
+- `ld` (linkage editor) merges one or more object files
     - Code written by others or using libraries (these are provided as object files)
 
-'''
+```
 [mda.cpp] --> (g++) --> mda
                 |
                 V
 [mda.cpp] --> [mda.s] --> [mda.o] --> mda (executable)
               assembly    object
-'''
+```
 
 ## Make
 
 - Is a _build automation_ tool
     - Automatically builds executable programs and libraries from source code
-    - The instructions live in a file called 'Makefile'/'makefile'
-- Put all the instructions we need to build the program in 'makefile'
+    - The instructions live in a file called `Makefile`/`makefile`
+- Put all the instructions we need to build the program in `makefile`
     - There is a syntax
-    - Convention is that there's _one_ 'makefile' per project
+    - Convention is that there's _one_ `makefile` per project
 
-'''
+```markdown
 # ex1.cpp ex2.cpp
 # This is a comment
 
@@ -671,13 +672,13 @@ Exercise2: ex2.cpp
 
 clean:
     rm *.0 ex1 ex2
-'''
+```
 
-'''sh
+```sh
 $ make #run the "all" command
 $ make Exercise1
 $ make clean
-'''
+```
 
 - Highly recommend getting in the habit of using make
 - Get familiar with the syntax (our labs will have instructions on how to use make).
@@ -685,8 +686,8 @@ $ make clean
 ## C++ programming with multiple files
 
 - Real world C++ programming separates these pieces out (functions declarations/definitions/main/etc)
-    - Using __header__ files '.h' -- these contain function prototypes (declaration)
-    - One or more files with function _definitions_, some with 'main' and some might not
+    - Using __header__ files `.h` -- these contain function prototypes (declaration)
+    - One or more files with function _definitions_, some with `main` and some might not
 
 __Why?__
 1. Reusability:
@@ -702,25 +703,25 @@ __Why?__
     - Easier to debug a portion of the whole program
 
 Lab 4 is our first example of this:
-- 'constants.h' --> global variable declarations
-- 'headers.h' --> function prototypes
-- 'arrays.cpp' --> main, all function definitions
-- 'ArrayFile.txt' --> external data file
+- `constants.h` --> global variable declarations
+- `headers.h` --> function prototypes
+- `arrays.cpp` --> main, all function definitions
+- `ArrayFile.txt` --> external data file
 
 # Debugging
 
 Debugging loops
 - Common errors with loops:
 1. Off-by-one error: loop executes one-too-few or one-too-many times
-    - Fix: Check your comparisons. Should it '<' and '<='?
+    - Fix: Check your comparisons. Should it `<` and `<=`?
     - Fix: Check your variable initializations.
 2. Infinite loops: usually from a mistake in the boolean expression that controls the loop
-    - Fix: Check the direction of inequalities '>' or '<'. Sometimes an issue with loops that use '!=' or '==' (with numeric values)
-        - '(i <= 0)'
+    - Fix: Check the direction of inequalities `>` or `<`. Sometimes an issue with loops that use `!=` or `==` (with numeric values)
+        - `(i <= 0)`
 
 __Loop tracing__
 - __Trace__ variables in a loop to observe _how_ they change
-    - Just insert 'cout' statements in our loop body with the variable we care about.
+    - Just insert `cout` statements in our loop body with the variable we care about.
 
 Loop testing guidelines
 - Every time a program is changed, it should be re-tested
@@ -756,8 +757,8 @@ Debugging advice:
 General debugging techniques:
 - Check for common errors, e.g.
     - Local vs reference parameters
-    - '=' or '=='
-    - '&&' instead of '||'
+    - `=` or `==`
+    - `&&` instead of `||`
     - Typically are logic errors
 - Localize the error
     - Using tracing and stubbing
@@ -775,8 +776,8 @@ Pre- and Post-Conditions
 
 - The string class allows us to treat strings like a basic data type.
     - Found in <string> library
-    - The "legacy" alternative is to treat strings as arrays of characters (from C language), 'char message[6]', c-strings.
-- Comes with useful functions like length(), substr(), find(), replace(), etc.
+    - The "legacy" alternative is to treat strings as arrays of characters (from C language), `char message[6]`, c-strings.
+- Comes with useful functions like `length()`, `substr()`, `find()`, `replace()`, etc.
 - Since strings are made of characters, we can index individual characters
 - Use the + operator to concatenate strings
 - Use the += operator to append to a string (i.e. add to the end)
@@ -798,34 +799,34 @@ Pre- and Post-Conditions
 - Search functions
     - find() will search for the first occurance of a string inside another string -- returns first index
     
-    """
+    ```cpp
     string question = "How now brown cow?";
 
     int first = question.find("ow");
-    """
+    ```
 
     - find() has an optional parameter of the starting index: find(string, index)
-    - finds the first occurance starting at position '4'
+    - finds the first occurance starting at position `4`
     
-    """
+    ```cpp
     int next = question.find("ow", 4);
-    """
+    ```
 
     - You can use find to check if a substring is not in the target string
     - string::npos is the "no position"; is returned if no position exists
 
-    """
+    ```cpp
     if (question.find("banana") == string::npos)
     {
         cout << "Yes, we have no banana\n";
     }
-    """
+    ```
 
     - rfind() will search the last occurance of a string
 
 - length() returns the length of the string
     - useful for looping over a string
-    - "string.length()"
+    - `string.length()`
 
 - String manipulators:
     - replace(start_position, number_of_places_to_replace, replacement_string)
@@ -862,23 +863,23 @@ Cons: only finds the 1st occurance of the target; slow
 ### Selection sort
 
 - Idea: when the sort is complete, the elements of the array are ordered in ascending order:
-    - 'a[0] <= a[1] <= a[2] ... <= a[size-1]'
+    - `a[0] <= a[1] <= a[2] ... <= a[size-1]`
 
 - The outline of the algorithm:
 
-'''
+```cpp
 for (int i=0;i<size;i++)
 {
     place the ith smallest element in a[i]
 }
-'''
+```
 
 1. Searth the smallest value in the array
-2. Place this value in 'a[0]' and place the value that was in 'a[0]' into the location where the smallest value was found (swap)
-3. Start from 'a[1]', find the smallest remaining value, swap it with 'a[1]'
-4. Starting from 'a[2]', continue, ..., until the array is sorted.
+2. Place this value in `a[0]` and place the value that was in `a[0]` into the location where the smallest value was found (swap)
+3. Start from `a[1]`, find the smallest remaining value, swap it with `a[1]`
+4. Starting from `a[2]`, continue, ..., until the array is sorted.
 
-'''
+```
 a[0] a[1] a[2] a[3] a[4] //swap a[3] with a[0]
  8    6    10   2    16
 
@@ -890,9 +891,9 @@ a[0] a[1] a[2] a[3] a[4] //swap a[2] with a[3]
 
 a[0] a[1] a[2] a[3] a[4] //sorted
  2    6    8   10    16
-'''
+```
 
-'''
+```cpp
 int indexOfSmallest(int a[], int startIndex, int size)
 {
     int min = a[startIndex];
@@ -928,7 +929,7 @@ void selectionSort(int a[], int size)
         swapValues(a[index], a[nextSmallest]);
     }
 }
-'''
+```
 
 ### Bubble sort
 
@@ -936,7 +937,7 @@ void selectionSort(int a[], int size)
 - It keeps exchanging (sorting) 2 adjecent elements at a time
     - When no more exchanges are required; the array is sorted
 
-'''
+```
 (5 1) 4 8
 (1 5) 4 8
 1 (5 4) 8
@@ -945,9 +946,9 @@ void selectionSort(int a[], int size)
 (1 4) 5 8
 1 (4 5) 8
 1 4 (5 8)
-'''
+```
 
-'''
+```cpp
 void bubbleSort(int a[], int size)
 {
     for (int i=size-1;i>=0;i--)
@@ -961,16 +962,16 @@ void bubbleSort(int a[], int size)
         }
     }
 }
-'''
+```
 
 ## C-String sidebar
 
-- A C-string is declared as arrays of 'char'
-- But, an array of 'char' is not by itself a C-string. A valid C-string requires a terminating "null" character.
+- A C-string is declared as arrays of `char`
+- But, an array of `char` is not by itself a C-string. A valid C-string requires a terminating "null" character.
     - The null character has an ASCII value of 0
-        - The escape sequence '\0' or '\x00'
+        - The escape sequence `\0` or `\x00`
 
-'''cpp
+```cpp
 char foo[10]; //Character array - can hold a C-string, but it is not yet a valid C-string (no terminating character)
 
 char bar[10] = {'h', 'e', 'l', 'l', 'o', '\0'}; //array initialization
@@ -990,18 +991,18 @@ In memory
 0  1  2  3  4  5  6  7  8  9
 \0
 */
-'''
+```
 
-- Since 'char' is a built-in data type, no header file is required to make C-strings.
-    - The C library '<cstring>' contains a number of useful functions that operate on C-strings 'strncpy()', 'strcmp()'.
+- Since `char` is a built-in data type, no header file is required to make C-strings.
+    - The C library `<cstring>` contains a number of useful functions that operate on C-strings `strncpy()`, `strcmp()`.
 
 ### Binary search
 
 - Binary search assumes the input data is already sorted.
-    - 'a[0] <= a[1] <= ... <= a[size-1]'
+    - `a[0] <= a[1] <= ... <= a[size-1]`
 - Twist: since the array is sorted, let's split it in half! How does the target value compare with the median value?
 
-'''
+```cpp
 Target 13
 
 Indices: 0  1  2  3  4  5  6
@@ -1012,9 +1013,9 @@ Indices: 4  5  6
 Values:  11 13 17
 
 13 <= 13: found it! 2 comparisons instead of 6
-'''
+```
 
-'''
+```cpp
 //Pre-condition: array is sorted in ascending order
 //Post-condition: if target is found, return non-negatice index; otherwise return -1
 /*
@@ -1050,15 +1051,15 @@ int binarySearch(int a[], int size, int target)
 
     return -1;
 }
-'''
+```
 
 # File I/O
 
 - Input and output via files
 
-'''
+```
 [input file] --> [C++ program] --> [output file]
-'''
+```
 
 How to do this?
 - _Stream_ variables for file I/O
@@ -1069,16 +1070,16 @@ How to do this?
         - E.g. disconnecting a stream from one file and then connecting it to another file
 
 - Declare an input-file stream variable
-'ifstream inStream;'
+`ifstream inStream;`
 
 - Declare an output-file stream variable
-'ofstream outStream;'
+`ofstream outStream;`
 
 - Connect to a file
     - Means "opening" the file
 - Use the member function called .open()
-'inStream.open("infile.dat");'
-'outStream.open("outfile.dat");'
+`inStream.open("infile.dat");`
+`outStream.open("outfile.dat");`
 
 Errors on opening files
 - It might not exist
@@ -1089,12 +1090,12 @@ Errors on opening files
     - returns true if the stream operation filed
 
 - Using the input stream
-- Once connected to a file, get input from the file using the extraction operator '>>' (just like using cin)
-- Once connected to a file, write output to the file using the insertion operator '<<' (just like using cout)
+- Once connected to a file, get input from the file using the extraction operator `>>` (just like using cin)
+- Once connected to a file, write output to the file using the insertion operator `<<` (just like using cout)
 
 Close the file!
 - Closing disconnects the stream from the file
-    - 'inStream.close()', 'outStream.close()'
+    - `inStream.close()`, `outStream.close()`
 - Reduces the chance of a file being corrupted if the program terminates abnormally
 - The system will automatically close the files you forget, as long as your program ends normally (with runtime errors)
 
@@ -1105,7 +1106,7 @@ Detecting the end of a file:
 2. <fstream> member function .eof()
 
 Method 1
-'''
+```cpp
   double next, sum(0);
   int count = 0;
 
@@ -1120,10 +1121,10 @@ Method 1
       count++;
   }
   cout << "Average: " << sum/count << endl;
-'''
+```
 
 Method 2 .eof()
-'''
+```cpp
 char c;
 inStream.get(c);
 while(!inStream.eof())
@@ -1132,45 +1133,47 @@ while(!inStream.eof())
     inStream.get(c);
 }
 cout << "\nDone!\n";
-'''
+```
 
 Which should we use?
-- Use '.eof()' when input is treated as text/strings/characters while using .get() to read the input
+- Use `.eof()` when input is treated as text/strings/characters while using .get() to read the input
 - Use the extraction operator (>>) when the input is numerical data
 
 Member function .get()
 - This is a function of every stream variable (for cin or any stream object)
 - Reads one character at a time
-- Stores that character in a variable of type 'char' (passed in as argument)
+- Stores that character in a variable of type `char` (passed in as argument)
 - Does not use the >> operator
 - Does not skip whitespaces
 
 Difference between .get() and getline()
 - getline() lets us input streams with whitespaces
 - Unlike cin, which separates by whitespaces
-- getline() is not a member function. It's provided by the <string> library. It takes as argument the input stream variable
+- getline() is not a member function. It's provided by the `<string>` library. It takes as argument the input stream variable
 
 Appending data
 - If the output file that you want to write already contains data, we would be overwriting it!
 
-- To append new output to the end of an existing file, use the constant 'ios::app' defined in the <fstream> library.
+- To append new output to the end of an existing file, use the constant `ios::app` defined in the <fstream> library.
     - We do this when we open the file
     - If the file does not exist a new file is created
-    - 'ios::app' is just another C++ constant that means "seek to the end before each write"
+    - `ios::app` is just another C++ constant that means "seek to the end before each write"
 
 Formatting output to file
 - Recall format decimal precision for standard out
-'''
+```cpp
 cout.setf(ios::fixed);
 cout.setf(ios::showpoint);
 cout.precision(3);
-'''
+```
+
 - We can do the same thing for our output streams
-'''
+
+```cpp
 outStream.setf(ios::fixed);
 outStream.setf(ios::showpoint);
 outStream.precision(3);
-'''
+```
 
 File stream objects in functions
 - We can define functions that do I/O
@@ -1178,11 +1181,11 @@ File stream objects in functions
 
 ### HW3 sidebar
 
-- Difference between '++i' and 'i++'
-- '++i' will increment 'i' and return incremented value
-- 'i++' will increment 'i' and return the original value (before it was incremented)
+- Difference between `++i` and `i++`
+- `++i` will increment `i` and return incremented value
+- `i++` will increment `i` and return the original value (before it was incremented)
 
-'''cpp
+```cpp
 int i = 1;
 int j = ++i;
 // i == 2, j == 2
@@ -1190,13 +1193,13 @@ int j = ++i;
 i = 1;
 j = i++;
 // i == 2, j == 1
-'''
+```
 
 # Structs and classes in C++
 
 - A class ia a complex data tyle that can have:
     - Multiple values within it, and multiple member functions
-    - E.g. 'string' class has member functions ('.length(), .erase(), .find()')
+    - E.g. `string` class has member functions (`.length(), .erase(), .find()`)
 
 - Structures are a good intro to classes
     - Use them as "containers" (objects) for variables of (possibly) different types
@@ -1214,7 +1217,7 @@ j = i++;
         - first name
         - GPA
 
-'''cpp
+```cpp
 struct Account
 {
     double balance;
@@ -1224,13 +1227,13 @@ struct Account
 };
 
 double Account::getData() { return balance;}
-'''
+```
 
 Using 'struct's
 - Definitions are usually placed outside any function definitions
     - So they can be globally used
 
-'''
+```cpp
 #include <iostream>
 #include <string>
 using namespace std;
@@ -1286,9 +1289,9 @@ int main()
 
     return 0;
 }
-'''
+```
 
-'''
+```cpp
 #include <iostream>
 #include <string>
 using namespace std;
@@ -1340,16 +1343,16 @@ int main()
 
     return 0;
 }
-'''
+```
 
 ## Classes
 
-- A 'class' is a complex data type whose variables are objects
+- A `class` is a complex data type whose variables are objects
 - The definition includes:
     - Member variables
     - Member functions
 
-'''
+```cpp
 #include <iostream>
 using namespace std;
 
@@ -1385,21 +1388,21 @@ int main()
     
     return 0;
 }
-'''
+```
 
-Limitations with 'DayOfYear'
+Limitations with `DayOfYear`
 - Changing how the month is stored requires changes to the while program
 - Example: if we decide to store the month as a 3 character value "JAN", "FEB", etc.
-    - 'cin >> today.month;' will no longer work
+    - `cin >> today.month;` will no longer work
     - Any comparisons that assume the member variable is int will have to change
-    - The 'output' function may have to change
+    - The `output` function may have to change
 
 Ideal class definition
-- Changing the implementation details of 'DayOfYear' requires changes to the program that uses objects of 'DayOfYear'
+- Changing the implementation details of `DayOfYear` requires changes to the program that uses objects of `DayOfYear`
     - Not ideal
 - An ideal class definition of 'DayOfYear' could be changed without requiring changes to the program that uses it
 
-Fixing 'DayOfYear'
+Fixing `DayOfYear`
 - We can do 2 things:
     1. Add member functions to use when changing or accessing the member variables
         - If the program never directly references, then changing how the variables are stored will not require changing the program!
@@ -1412,7 +1415,7 @@ Public or Private?
 - Private member variables of a class can only be referenced within the definitions of member functions of that class, not by the progran!
     - Private members can be variables or functions
 
-'''
+```cpp
 class DayOfYear{
     public:
         //void input();
@@ -1452,13 +1455,13 @@ int main()
 
     return 0;
 }
-'''
+```
 
 Using private variables:
 - It is convention to make all member variables private
 - Private variables require member functions to perform all changing/retrieving of values
 - Accessor functions: obtain values of member variables and return them
-- Mutator functions: changes the values of member variables ('set()')
+- Mutator functions: changes the values of member variables (`set()`)
 
 ### Constructors
 
@@ -1469,7 +1472,7 @@ Using private variables:
 - A constructor cannot return a value
     - No return type, not even void, it's a special class-specific function
 
-'''
+```cpp
 #include <iosteam>
 #include <string>
 using namespace std;
@@ -1546,19 +1549,19 @@ int main()
 
     return 0;
 }
-'''
+```
 
 Initialization sections:
 - An alternative way to initialize member variables
 
-'''
+```cpp
 Coordinate::Coordinate() : x(0), y(0) { }
-'''
+```
 
 ### Abstract data types (ADT)
 
 - A data type consists of one or more values together with a set of basic operations defined on those values
-    - 'int'
+    - `int`
     - You know how it is used, but we don't need to know how the computer deals with it internally (the implementation details)
 
 - A data type is an abstract data type if programmers using it do not have to access the details of how the values and operations are implemented.
@@ -1582,8 +1585,8 @@ ADT benefits
     - Derived classes are classes that are obtained from another class
     - A derived class inherits the member functions and variables from its parent class (without rewriting them)
 - Example:
-    - 'cin' belongs to the class of "all input streams" but not the class of input-file streams
-    - I/O file streams ('ifstream', 'ofstream') are actually derived classes from a general stream class, but with added features (member functions) like 'open()' and 'close()'
+    - `cin` belongs to the class of "all input streams" but not the class of input-file streams
+    - I/O file streams (`ifstream`, `ofstream`) are actually derived classes from a general stream class, but with added features (member functions) like `open()` and `close()`
 
 Example:
 - Natural hierarchy of bank accounts
@@ -1607,7 +1610,7 @@ Derive: public or private?
 
 Protected members are accessible in the class that defines them and in classes that inherit from that class
 
-'''cpp
+```cpp
 #include <iostream>
 #include <string>
 using namespace std;
@@ -1680,7 +1683,7 @@ int main()
 
     return 0;
 }
-'''
+```
 
 # Test-driven development (TDD)
 
@@ -1700,22 +1703,22 @@ TDD "lite"
 ## Example
 
 Requirement:
-- Write a function that "draws" (in ASCII characters) a square using '*' characters, given some integer input for the size.
-- Example 'drawSquare(5)' draws:
+- Write a function that "draws" (in ASCII characters) a square using `*` characters, given some integer input for the size.
+- Example `drawSquare(5)` draws:
 
-'''
+```
 *****
 *****
 *****
 *****
 *****
-'''
+```
 
 First step: Write a test case for this requirement
 1. Something to check on the expected value vs the actual
 2. Something to run this check on a test of the function
 
-'''cpp
+```cpp
 void assertEqual(string expected, string actual, string message = "") {
     if (expected == actual)
     {
@@ -1730,9 +1733,9 @@ void assertEqual(string expected, string actual, string message = "") {
 
 //in main()
 assertEqual("**\n**\n", "*\n*\n", "length: 2");
-'''
+```
 
-'''cpp
+```cpp
 void testDrawSquare()
 {
     string expected1 = "**\n**\n";
@@ -1743,9 +1746,9 @@ void testDrawSquare()
     string actual2 = drawSquare(3);
     assertEqual(expected2, actual2, "length: 3");
 }
-'''
+```
 
-'''cpp
+```cpp
 string drawSquare(int length)
 {
     string result = "";
@@ -1759,7 +1762,7 @@ string drawSquare(int length)
     }
     return result;
 }
-'''
+```
 
 # Recursion
 
@@ -1769,39 +1772,39 @@ string drawSquare(int length)
 - When breaking a task into subtasks, it may be the case that the subtask is a smaller version of the same task
 
 Example: the factorial function
-- Recall: 'x! = 1 * 2 * 3 * ... * x'
-    - 'x! = x * (x-1) * (x-2) * ... * 2 * 1'
+- Recall: `x! = 1 * 2 * 3 * ... * x`
+    - `x! = x * (x-1) * (x-2) * ... * 2 * 1`
 
-'''cpp
+```cpp
 //a loop
 int x = 5, fact = 1;
 for (int k=0;k<x;k++)
 {
     fact *= k;
 }
-'''
+```
 
 - From mathematics, recall we can create a recursive formula from a sequence
-- Example: the arithmetic sequence: '5, 10, 15, 20, 25, 30, ...'
-- 'a(n) = a(n-1) + 5'
-    - 'n' is the sequence position
-    - the special case being when 'n = 1', 'a(1) = 5' (this is the "starting value")
+- Example: the arithmetic sequence: `5, 10, 15, 20, 25, 30, ...`
+- `a(n) = a(n-1) + 5`
+    - `n` is the sequence position
+    - the special case being when `n = 1`, `a(1) = 5` (this is the "starting value")
 
-'''
+```
 a(4) = a(3) + 5
      = (a(2) + 5) + 5
      = ((a(1) + 5) + 5) + 5
      = ((5 + 5) + 5) + 5
      = 20
-'''
+```
 
 The base case
-- If we assume that we start the sequence at 'n=1' then we could write a defitiion for 'a(n)' like this:
+- If we assume that we start the sequence at `n = 1` then we could write a defitiion for `a(n)` like this:
 1. If n = 1, then return 5
-2. Otherwise, return 'a(n-1) + 5'
+2. Otherwise, return `a(n-1) + 5`
 - We have to know what the base case is, otherwise the recursion never end!
 
-'''cpp
+```cpp
 int series(int n)
 {
     //the base case
@@ -1823,9 +1826,9 @@ int series(int n)
 //n=3: return series(2) + 5
 //n=2: return series(1) + 5
 //n=1: return 5
-'''
+```
 
-'''cpp
+```cpp
 //x! = x * (x-1) * (x-2) * ... * 1
 int factorial(int n)
 {
@@ -1838,7 +1841,7 @@ int factorial(int n)
     //the recursive case
     return n * factorial(n-1);
 }
-'''
+```
 
 Example: vertical numbers
 - Problem: write a recursive function definition that takes a non-negative integer and prints it out one digit-at-a-time vertically.
@@ -1866,7 +1869,7 @@ Algorithm:
 - Step 1 is a smaller version of the original task
 - Step 2 is the simplest case, the base case
 
-'''cpp
+```cpp
 void vertical(int n);
 //Precondition: n >= 0
 //Postcondition: n is written to the screen vertically with each digit on a separate line
@@ -1887,7 +1890,7 @@ void vertical(int n)
         cout << n % 10 << endl;
     }
 }
-'''
+```
 
 vertical(543) - (5) -> print 3
 |  (1)
@@ -1931,13 +1934,13 @@ Stacks and making recursive calls
 4. New data is saved on top of the stack
 5. Repeat until we reach the base case
 
-'''
+```
 Stack
 =====
-vertical(5) //base case
+vertical(5) // base case
 vertical(54)
 vertical(543)
-'''
+```
 
 When a recursive call gets to the base case
 1. The computer retrieves the top memory unit of the stack
@@ -1952,13 +1955,13 @@ Stack overflow (not the website)
 - The result is called a stack overflow. This causes abnormal termination
 
 Other recursive functions
-- Recursive functions can have any return type (void, int, string, etc.)
+- Recursive functions can have any return type (`void`, `int`, `string`, etc.)
 
 A powers function
 - define a new power function (not the one in cmath)
 - let it return an integer 2^3 when we call the function as:
-    int y = power(2, 3);
-- Use the following definition: x^n = x^(n-1) * x
+    `int y = power(2, 3);`
+- Use the following definition: `x^n = x^(n-1) * x`
     - E.g., 2^3 = 2^2 * 2
     - Only works if n is positive
 
@@ -1972,7 +1975,7 @@ power(2,1) * 2 --> 2 * 2
 power(2,2) * 2 --> 4 * 2
 power(2,3)     --> = 8
 
-'''cpp
+```cpp
 int power(int x, int n)
 {
     //before the base case, it's a good idea to handle "illegal" input
@@ -1991,12 +1994,12 @@ int power(int x, int n)
         return power(x, n-1) * x;
     }
 }
-'''
+```
 
 Recusion vs. iteration
 - Any task that can be accomplished using recusrion can also be done without (using loops) and vice versa
 
-'''cpp
+```cpp
 int powerIterative(int x, int n)
 {
     int p = 1;
@@ -2006,11 +2009,11 @@ int powerIterative(int x, int n)
     }
     return p;
 }
-'''
+```
 
 Reversing a string
 
-'''cpp
+```cpp
 string reverseStringIt(string s)
 {
     string r = "";
@@ -2030,27 +2033,27 @@ string reverseString(string s)
     }
     return s[s.length()-1] + reverseString(s.substr(0, s.length()-1));
 }
-'''
+```
 
 # Summing an integer array
 
-'''cpp
+```cpp
 int array[3] = {10, 20, 30};
 int size = 3, sum = 0;
 for (int i=0;i<size;i++)
 {
     sum += array[i];
 }
-'''
+```
 
 1. Recursive function needs two arguments: array, the size of the array
-2. Repeat (recurse) with a smaller array (size - 1), then add its result to array[size-1]
+2. Repeat (recurse) with a smaller array (size - 1), then add its result to `array[size-1]`
 --> Push values onto the last stack.
 3. Stop? When size is 0; sum of empty array is 0.
 The operations will be popped off the stack in this order:
 0 + array[0] + array[1] + array[2] + ... + array[size-1]
 
-'''cpp
+```cpp
 int sumArray(int a[], int size)
 {
     //base case
@@ -2061,4 +2064,4 @@ int sumArray(int a[], int size)
     //recursive case
     return a[size-1] + sumArray(a, size-1);
 }
-'''
+```
